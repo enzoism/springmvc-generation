@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <!--SpringMVC的配置文件，包含网站跳转逻辑的控制，使用指定的配置，修改use-default-filters为false  -->
+    <context:component-scan base-package="com.enzoism" use-default-filters="false">
+        <!--只扫描控制器 -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 开启Spring注解模式，不用扫描controller -->
+    <context:annotation-config />
+
+    <!--两个标准配置  -->
+    <!-- 能支持springmvc更高级的一些功能，JSR303校验，快捷的ajax...映射动态请求 -->
+    <mvc:annotation-driven/>
+    <!-- 将springmvc不能处理的请求交给tomcat -->
+    <mvc:default-servlet-handler/>
+
+    <!--配置视图解析器，方便页面返回  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!-- 配置文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为5MB -->
+        <property name="maxUploadSize">
+            <value>524288000</value>
+        </property>
+    </bean>
+
+    <!-- swagger配置文件 -->
+    <!-- 将 springSwaggerConfig加载到spring容器 -->
+    <!--<bean class="com.huawei.prometheus.utils.SwaggerConfig" />-->
+
+    <!-- 配置静态资源文件的解析，包括js、css、img.... -->
+    <!-- /**表示拦截文件夹下的所有文件，包括子路径 -->
+    <!--<mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/img/" mapping="/img/**"/>-->
+</beans>

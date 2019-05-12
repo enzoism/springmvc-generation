@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<localRepository>C:/Users/zhifeng/.m2/repository/</localRepository>
+	<pluginGroups>
+	</pluginGroups>
+
+	<proxies>
+	</proxies>
+
+	<servers>
+	</servers>
+
+	<mirrors>
+		<mirror>
+		  <id>maven-aliyun</id>
+		  <mirrorOf>*</mirrorOf>
+		  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</mirror>
+		<mirror>    
+		  <id>ibiblio.org</id>    
+		  <name>ibiblio Mirror of http://repo1.maven.org/maven2/</name>    
+		  <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>    
+		  <mirrorOf>central</mirrorOf>    
+		</mirror>  
+		<mirror>
+			<id>nexus-aliyun</id>
+			<mirrorOf>*</mirrorOf>
+			<name>Nexus aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+		</mirror> 
+		<mirror>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<mirrorOf>central</mirrorOf>        
+		</mirror>
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>nexus</id>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>http://maven.aliyun.com/nexus/content/repositories/central</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>central</id>
+					<url>http://repo.maven.apache.org/maven2</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>ansj-repo</id>
+					<name>ansj Repository</name>
+					<url>http://maven.nlpcn.org/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>central</id>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+						
+		</profile>
+
+	</profiles>
+	<activeProfiles>
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+
+
+
+</settings>
